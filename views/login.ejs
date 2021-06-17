@@ -1,0 +1,53 @@
+<%- include('partials/head'); -%>
+<%- include('partials/materialize'); -%>
+
+<style>
+  body {
+      display: flex; 
+      min-height: 100vh;
+      flex-direction: column;
+      background-image: url('/images/six.jpg');
+      background-size: cover;
+      /* background-position: center; */
+  }
+</style>
+
+<body>
+  <div class="container">
+  
+    <h3>Login</h3>
+
+    <form action="/login" method="POST">
+  
+
+    <div class="row">
+      <div class="input-field col l6 s12">
+        <i class="material-icons prefix">email</i>
+        <input id="emailTxt" name="email" type="text" class="validate">
+        <label for="emailTxt">Email</label>
+    </div>
+  </div>
+
+    <div class="row">
+      <div class="input-field col l6 s12">
+        <i class="material-icons prefix">lock</i>
+        <input id="passwordTxt" name="password" type="password" class="validate">
+        <label for="passwordTxt">Password</label>
+      </div>
+    </div>
+
+    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+        <i class="material-icons right">send</i>
+      </button>
+</form>
+
+<script src="/js/login.js"></script>
+   <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-analytics.js"></script>
+</div>
+   </body>
+   </html>

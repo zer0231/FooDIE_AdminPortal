@@ -1,0 +1,74 @@
+<%- include('partials/head'); -%>
+<%- include('partials/materialize'); -%>
+<bodv>
+  <div class="container">
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-messaging.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-analytics.js"></script>
+<% if(data) { %>
+
+
+
+
+
+
+  <div class="row">
+    <form action="/notify" method="POST" class="col s12">
+      <input type="hidden" name="userToken" value="<%= data.notificationToken %>">
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="input_text" type="text" name="msgTitle" data-length="10">
+          <label for="input_text">Enter Title</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea id="textarea2" name="msgBody" class="materialize-textarea" data-length="40"></textarea>
+          <label for="textarea2">Enter Message</label>
+        </div>
+      </div>
+
+  <input type="submit" name="send"/>
+    </form>
+  </div>
+
+
+<% } else{ %>  
+  <p>Nice try old man</p>
+<% } %>
+
+<script>
+    $(document).ready(function() {
+  $('input#input_text, textarea#textarea2').characterCounter();
+  });
+
+    const form = document.querySelector('form');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const token = form.userToken.value;
+  const msgBody = form.msgBody.value;
+  const msgTitle = form.msgTitle.value;
+  try 
+     {
+           const res = await fetch('/notify', { 
+               method: 'POST', 
+               body: JSON.stringify({token,msgBody,msgTitle}),
+               headers: {'Content-Type': 'application/json'}
+           });
+          const response = await res.json();
+         console.log(response.data);
+         M.toast({html:response.data})
+       }   
+     catch(err)
+     {
+       console.log(err);
+     }
+  
+  });
+  </script>
+</div>
+</bodv>
+
+
+<%- include('partials/footer'); -%>

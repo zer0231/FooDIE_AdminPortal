@@ -1,0 +1,21 @@
+{
+  "name": "adminportal",
+  "version": "1.0.0",
+  "description": "For the project VI",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node index.js"
+  },
+  "author": "zer0231",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "firebase": "^8.6.1",
+    "firebase-admin": "^9.7.0",
+    "firebase-functions": "^3.13.2",
+    "firebase-messaging": "^1.0.6",
+    "l": "^0.6.0"
+  }
+}

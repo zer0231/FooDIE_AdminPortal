@@ -1,0 +1,32 @@
+
+<%- include('partials/head'); -%>
+<%- include('partials/materialize'); -%>
+
+<%- include('partials/navbar'); -%>
+<body>
+    <div class="container">
+    
+<div class="input-field col s6">
+    <input id="full_name" type="text" class="validate" value="<%= userData.name%>">
+    <label for="full_name">Full Name</label>
+  </div>
+
+<div class="input-field col s6">
+    <input id="address" type="text" class="validate" value="<%= userData.address%>">
+    <label for="address">Address</label>
+</div>
+
+<div class="input-field col s6">
+    <input id="phone_number" type="text" class="validate" value="<%= userData.phoneNumber%>">
+    <label for="phone_number">Phone Number</label>
+</div>
+<img class="materialboxed" width="650" src="https://cdn.discordapp.com/attachments/799548978328764446/838322294928834580/wallpapersden.com_grim-reaper-artwork_1920x1080.jpg" ><!--src="<%= userData.imageLink %>">-->
+    
+    <script>
+         document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.materialboxed');
+    var instances = M.Materialbox.init(elems, options);
+  });
+     </script>
+     </div>
+</body>

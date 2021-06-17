@@ -1,0 +1,124 @@
+<%- include('partials/head'); -%>
+<%- include('partials/materialize'); -%>
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-storage.js"></script>
+
+<body>
+  <div class="container">
+  
+<form action="/signup" method="POST" enctype="multipart/form-data">
+  
+  <div class="input-field col s6">
+    <input id="full_name"  name="name" type="text" class="validate" >
+    <label for="full_name">Full Name</label>
+  </div>
+
+  <div class="input-field col s6">
+    <input id="address"  name="address" type="text" class="validate" >
+    <label for="address">Address</label>
+  </div>
+  
+  <div class="input-field col s6">
+    <input id="phoneNumber"  name="phoneNumber" type="text" class="validate" >
+    <label for="phoneNumber">Phone Number</label>
+  </div>
+  
+  <div class="input-field col s6">
+    <input id="email"  name="email" type="email" class="validate" >
+    <label for="email">Email</label>
+    </div>
+
+   <div class="input-field col s6">
+    <input id="password"  name="password" type="password" class="validate" >
+    <label for="password">Password</label>
+    </div>
+
+
+    <div class="file-field input-field">
+      <div class="btn">
+        <span>Image or Logo</span>
+        <input type="file" name="orgImage">
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" name="orgImage" type="text">
+      </div>
+    </div>
+    <center>
+    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+      <i class="material-icons right">send</i>
+    </button>
+  </center>
+          
+</form>
+<div id="errorFromServer"></div>
+
+<script>
+    const firebaseConfig = {
+    apiKey: "AIzaSyCSL3LRCgUeW9oC5yDw6egAdT1IzQ5rg7k",
+    authDomain: "foodie-19d4e.firebaseapp.com",
+    databaseURL: "https://foodie-19d4e-default-rtdb.firebaseio.com",
+    projectId: "foodie-19d4e",
+    storageBucket: "foodie-19d4e.appspot.com",
+    messagingSenderId: "836191715653",
+    appId: "1:836191715653:web:8a672d63407970cb567e2c",
+    measurementId: "G-JED9GHVKPS"
+  };
+  firebase.initializeApp(firebaseConfig);
+
+const form = document.querySelector('form');
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+  
+   upload(form).then(data=>{
+     console.log(data);
+     const res =  fetch('/signup',{
+       method:'POST',
+       body: JSON.stringify({data}),
+                headers: {'Content-Type': 'application/json'}
+    
+     }).then(res =>{
+      if(res.status == 200)
+      {
+        window.location = "http://localhost:4000/dashboard";
+      }
+      else{
+        alert("OOPS try again");
+      }
+     });
+
+          
+   }).then(response=>{
+        console.log(response);
+     }).catch(err=>{
+       console.log(err);
+     });
+    });
+
+    async function upload(form)
+{  
+  const Iname = Math.random().toString(36).substring(2,29);
+      console.log(Iname);
+
+   const name = form.name.value;
+    const email = form.email.value;
+    const address = form.address.value;
+    const phoneNumber = form.phoneNumber.value;
+    const password = form.password.value;
+    const orgImage = form.orgImage.files[0];
+    const imageLink = '';
+    
+    const metadata = {contentType:orgImage.type}
+    var  dataFetch = {};
+    const ref = firebase.storage().ref();
+  const task = ref.child(Iname).put(orgImage,metadata);
+    await task.then(snapshot => snapshot.ref.getDownloadURL())
+            .then(url =>{
+              var imageLink  = url;  
+                   dataFetch = {name,email,address,phoneNumber,password,imageLink};
+            });
+            return dataFetch;        
+          }
+</script>
+</div>
+</body>
+<%- include('partials/footer'); -%>

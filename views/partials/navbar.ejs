@@ -1,0 +1,43 @@
+
+  <nav>
+    <div class="nav-wrapper indigo darken-2">
+      <div class="container">
+        <!-- <a href="/" class="brand-logo"><img width="64px" height="64px" src="/images/foodie_icon.jpg"></a> -->
+        <a href="/" class="brand-logo"><span class="logo">FOOD</span>ie</a>
+        <a href="#" class="sidenav-trigger" data-target="mobile-links">
+          <i class="material-icons">menu</i>
+        </a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="/dashboard">Dashboard</a></li>
+          <li><a href="/dashboard/profile">Profile</a></li>
+          <li><a href="/dashboard/myProducts">My Products</a></li>
+          <li><a href="/dashboard/addProduct">Add Product</a></li>
+          <li><a href="/logout">Log out</a></li>
+      </ul>
+      </div>
+      
+    </div>
+  </nav>
+
+  <ul id = "mobile-links" class="sidenav">
+    <li><a href="/dashboard">Dashboard</a></li>
+    <li><a href="/dashboard/profile">Profile</a></li>
+    <li><a href="/dashboard/myProducts">My Products</a></li>
+    <li><a href="/dashboard/addProduct">Add Product</a></li>
+    <li><a href="/logout">Log out</a></li>
+  </ul>
+
+  <style>
+    .logo{
+      font-weight: bold;
+    }
+  </style>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+
+  <script>
+    $(document).ready(function(){
+      $('.sidenav').sidenav();
+    })
+  </script>

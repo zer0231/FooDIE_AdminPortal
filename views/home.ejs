@@ -1,0 +1,34 @@
+<%- include('partials/head'); -%>
+<%- include('partials/materialize'); -%>
+    <style>
+        body {
+            display: flex; 
+            min-height: 100vh;
+            flex-direction: column;
+            background-image: url('/images/four.jpg');
+            background-size: cover;
+            /* background-position: center; */
+        }
+
+        main {
+            flex: 1 0 auto;
+        }
+
+        .login-button{
+            margin-top: 20px;
+        }
+
+    </style>
+<body>
+    <div class="container">
+        <h2 class="center-align white-text">Foodie Control Panel</h2>
+            <div class="row">
+                <div class = "input-field col s6 offset-s5"> 
+                    <span class="flow-text">
+                        <a href="/login" class="waves-effect waves-light pulse btn center-align login-button"><i class="material-icons right">cloud</i>Login</a>
+                    </span>
+                </div>
+            </div>
+    </div>
+</body>
+</html>
