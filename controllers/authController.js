@@ -229,7 +229,7 @@ if(firebase.auth().currentUser == null)
 }
 var productData=null;
 var ref = db.ref("products/")
-ref.on("value", function(snapshot) {
+ref.once("value", function(snapshot) {
   try { 
   var productData = snapshot.val();
   } catch (error) {
@@ -274,6 +274,7 @@ module.exports.addProduct_get = (req,res) =>{
 
 module.exports.addProduct_post = (req,res) =>{
  console.log(req.body.data)
+ var data={error:"No error"};
  var rating = 0.0;
  var name = req.body.data.name;
  var imageLink = req.body.data.imageLink;
@@ -285,7 +286,7 @@ module.exports.addProduct_post = (req,res) =>{
  }).then((out)=>{
    res.status(201).json({data:"Success"});
  }).catch((err)=>{
-   res.status(400).json({data:"error mf"});
+   res.status(400).json(data.error = "Error");
  });
 }
 
