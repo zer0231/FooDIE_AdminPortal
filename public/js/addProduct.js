@@ -25,7 +25,7 @@ form.addEventListener('submit', async (e) => {
       if(res.status == 201)
       {
         alert("Product Added");
-        window.location = "/dashboard/myProducts";
+        // window.location = "/dashboard/myProducts";
       }
       else{
         alert("try again");
@@ -44,7 +44,7 @@ form.addEventListener('submit', async (e) => {
 {  
   const Iname = Math.random().toString(36).substring(2,29);
       console.log(Iname);
-var error = "false";
+    var error = "false";
    const name = form.name.value;
     const briefDescription = form.briefDescription.value;
     const price = form.price.value;
