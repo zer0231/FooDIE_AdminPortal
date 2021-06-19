@@ -7,60 +7,48 @@
 <body>
   <div class="container">
     <%if (products == null) { %>
-<h3>You dont have anything try uploading some new products</h3>
+    <h3>You dont have anything try uploading some new products</h3>
 
     <% }
     else{ %> 
 
     
       
-<input type="hidden" value="<%= JSON.stringify(products)%>" id="jsonValue">
-<!-- <%= products[Object.keys(products)[0]].itemName %>
-<%= Object.keys(products).length %> -->
+    <input type="hidden" value="<%= JSON.stringify(products)%>" id="jsonValue">
+    <!-- <%= products[Object.keys(products)[0]].itemName %>
+    <%= Object.keys(products).length %> -->
          
-<div class="row">
+    <div class="row">
  
-    <% for(var i=0; i < Object.keys(products).length ; i++) { %>
+      <% for(var i=0; i < Object.keys(products).length ; i++) { %>
      
-         <p>
- <div class="col s12 m7">
-      <div class="card">
-        <div class="card-image">
-          <img class="materialboxed" width="650" height="350" src="<%= products[Object.keys(products)[i]].imageLink %>">
-          <span class="card-title" style="font-weight: bolder;"><%= products[Object.keys(products)[i]].name %></span>
-          <a href="editProduct/<%= Object.keys(products)[i] %>" class="btn-floating halfway-fab waves-effect waves-light red "><i class="material-icons">edit</i></a>
-       
- 
-
-        </div>
-        <div class="card-content">
-          
-          <p><%= products[Object.keys(products)[i]].briefDescription %></p>
-          <p><%= products[Object.keys(products)[i]].itemType %></p>
-  
-          <p><%= products[Object.keys(products)[i]].price %></p>
       
-          
+        <div class="col s12 m7">
+          <div class="card">
+            <div class="card-image">
+              <img class="materialboxed" width="650" height="350" src="<%= products[Object.keys(products)[i]].imageLink %>">
+              <span class="card-title" style="font-weight: bolder;"><%= products[Object.keys(products)[i]].name %></span>
+              <!-- <a href="editProduct/<%= Object.keys(products)[i] %>" class="btn-floating halfway-fab waves-effect waves-light red "><i class="material-icons">edit</i></a> -->
+            </div>
+            <div class="card-content">
+              <p><%= products[Object.keys(products)[i]].briefDescription %></p>
+              <p><%= products[Object.keys(products)[i]].itemType %></p>
+              <p><%= products[Object.keys(products)[i]].price %></p>
+            </div>
+            <div class="card-action">
+              <a onclick="deleteProduct('<%= Object.keys(products)[i] %>')" class="waves-effect waves-light btn"><i class="material-icons right">delete</i>Delete</a>
+            </div>
+          </div>
         </div>
-        <div class="card-action">
-          <a onclick="deleteProduct('<%= Object.keys(products)[i] %>')" class="waves-effect waves-light btn"><i class="material-icons right">delete</i>Delete</a>
-
-         
-        </div>
-      </div>
-      </div>
+    
+        <% } %>
+    </div>
     <% } %>
-
-</div>
-<% } %>
-<script>
-  $(document).ready(function(){
-    $('.materialboxed').materialbox();
-  });
-
-</script>
+    <script>
+      $(document).ready(function(){
+        $('.materialboxed').materialbox();
+      });
+    </script>
     <script src="/js/myProduct.js"></script>
-
-      
   </div>
 </body>
