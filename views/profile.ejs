@@ -4,23 +4,34 @@
 
 <%- include('partials/navbar'); -%>
 <body>
-    <div class="container">
-    
-<div class="input-field col s6">
-    <input id="full_name" type="text" class="validate" value="<%= userData.name%>">
-    <label for="full_name">Full Name</label>
-  </div>
+    <div class="container" style="margin-top: 50px;">
+        <div class="row">
+            <div class="col s12 l2">
+                <img class="circle" width="200" height="200" src="https://cdn.discordapp.com/attachments/799548978328764446/838322294928834580/wallpapersden.com_grim-reaper-artwork_1920x1080.jpg" >
+            </div>
 
-<div class="input-field col s6">
-    <input id="address" type="text" class="validate" value="<%= userData.address%>">
-    <label for="address">Address</label>
-</div>
+            <div class="col s12 offset-l1 l8 offset-l1">
+                <div class="input-field col s6">
+                    <input id="full_name" type="text" class="validate" value="<%= userData.name%>">
+                    <label for="full_name">Full Name</label>
+                </div>
+            </div>
 
-<div class="input-field col s6">
-    <input id="phone_number" type="text" class="validate" value="<%= userData.phoneNumber%>">
-    <label for="phone_number">Phone Number</label>
-</div>
-<img class="materialboxed" width="650" src="https://cdn.discordapp.com/attachments/799548978328764446/838322294928834580/wallpapersden.com_grim-reaper-artwork_1920x1080.jpg" ><!--src="<%= userData.imageLink %>">-->
+            <div class="col s12 offset-l1 l8 offset-l1">
+                <div class="input-field col s6">
+                    <input id="address" type="text" class="validate" value="<%= userData.address%>">
+                    <label for="address">Address</label>
+                </div>
+            </div>
+
+            <div class="col s12 offset-l1 l8 offset-l1">
+                <div class="input-field col s6">
+                    <input id="phone_number" type="text" class="validate" value="<%= userData.phoneNumber%>">
+                    <label for="phone_number">Phone Number</label>
+                </div>
+            </div>
+        </div>
+<!--src="<%= userData.imageLink %>">-->
     
     <script>
          document.addEventListener('DOMContentLoaded', function() {
