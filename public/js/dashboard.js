@@ -6,14 +6,15 @@ document.addEventListener('DOMContentLoaded', function() {
             });
 
             const firebaseConfig = {
-    apiKey: "AIzaSyCSL3LRCgUeW9oC5yDw6egAdT1IzQ5rg7k",
-    authDomain: "foodie-19d4e.firebaseapp.com",
-    databaseURL: "https://foodie-19d4e-default-rtdb.firebaseio.com",
-    projectId: "foodie-19d4e",
-    storageBucket: "foodie-19d4e.appspot.com",
-    messagingSenderId: "836191715653",
-    appId: "1:836191715653:web:8a672d63407970cb567e2c",
-    measurementId: "G-JED9GHVKPS"
+              apiKey: "AIzaSyC3u0nbB9lH7bOUd5Qc38qBeCSDMje5lI0",
+              authDomain: "foodie-19d4e.firebaseapp.com",
+              databaseURL: "https://foodie-19d4e-default-rtdb.firebaseio.com",
+              projectId: "foodie-19d4e",
+              storageBucket: "foodie-19d4e.appspot.com",
+              messagingSenderId: "836191715653",
+              appId: "1:836191715653:web:dfb851cb44e3e883567e2c",
+              measurementId: "G-LN2MPRKEGD"
+          
   };
   firebase.initializeApp(firebaseConfig);
 

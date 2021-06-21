@@ -10,7 +10,7 @@ class items{
 }
 
 firebase.initializeApp({
-  apiKey:"AIzaSyCSL3LRCgUeW9oC5yDw6egAdT1IzQ5rg7k",
+  apiKey:"AIzaSyC3u0nbB9lH7bOUd5Qc38qBeCSDMje5lI0",
   databaseURL: "https://foodie-19d4e-default-rtdb.firebaseio.com"
 });
 var db = firebase.database();
@@ -264,7 +264,7 @@ module.exports.editproduct_get = (req,res) =>{
   console.log("ID "+ req.params.productId);
 }
 
-
+ 
 module.exports.addProduct_get = (req,res) =>{
   res.render('addProduct',{title:"Add a Product"})
 }
