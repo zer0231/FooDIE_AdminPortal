@@ -66,7 +66,7 @@ else{
   }
  tableData +="</tbody></table><div class='row'><a class='waves-effect waves-light btn'><i class='material-icons right'>done</i><input value='Done' type='submit' onclick=\'removeDatabase(\"" + uniqueKey + "\");\'></a>";
  tableData +="<a class='col' href='/notify/"+userKey+"'>send Notification</a>";
- tableData +="<a class='col s10' href='https://www.google.com.np/maps/dir/"+exactAddress+"'>Delivery Location</a>";
+ tableData +="<a class='col s10' href='https://www.google.com.np/maps/dir/"+exactAddress+"' target='_blank' rel='noopener noreferrer' >Delivery Location</a>";
  tableData +="</span></div></div></div>";
   divtest.innerHTML = tableData;
  document.getElementById("pendingOrderList").appendChild(divtest)

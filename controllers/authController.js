@@ -232,6 +232,7 @@ var ref = db.ref("products/")
 ref.once("value", function(snapshot) {
   try { 
   var productData = snapshot.val();
+  console.log(productData);
   } catch (error) {
     console.log(error);
   }
@@ -281,8 +282,9 @@ module.exports.addProduct_post = (req,res) =>{
  var price = req.body.data.price;
  var briefDescription = req.body.data.briefDescription
  var itemType = req.body.data.itemType
+ var status = "available"
  firebase.database().ref("products/").push({
-  name,imageLink,price,briefDescription,itemType,rating
+  name,imageLink,price,briefDescription,itemType,rating,status
  }).then((out)=>{
    res.status(201).json({data:"Success"});
  }).catch((err)=>{

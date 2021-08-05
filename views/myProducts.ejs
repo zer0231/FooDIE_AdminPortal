@@ -12,7 +12,9 @@
     <% }
     else{ %> 
 
-    
+<script>
+  console.log("Hello<%= products%>");
+</script>    
       
     <input type="hidden" value="<%= JSON.stringify(products)%>" id="jsonValue">
     <!-- <%= products[Object.keys(products)[0]].itemName %>
@@ -21,9 +23,10 @@
     <div class="row">
  
       <% for(var i=0; i < Object.keys(products).length ; i++) { %>
-     
+     <%if (products[Object.keys(products)[i]].status == "available") {%>
+
       
-        <div class="col s12 m7">
+        <div class="col s12 m7" id="<%= Object.keys(products)[i] %>">
           <div class="card">
             <div class="card-image">
               <img class="materialboxed" width="650" height="350" src="<%= products[Object.keys(products)[i]].imageLink %>">
@@ -34,13 +37,13 @@
               <p><%= products[Object.keys(products)[i]].briefDescription %></p>
               <p><%= products[Object.keys(products)[i]].itemType %></p>
               <p><%= products[Object.keys(products)[i]].price %></p>
-            </div>
+              </div>
             <div class="card-action">
               <a onclick="deleteProduct('<%= Object.keys(products)[i] %>')" class="waves-effect waves-light btn"><i class="material-icons right">delete</i>Delete</a>
             </div>
           </div>
         </div>
-    
+    <%}%>
         <% } %>
     </div>
     <% } %>
