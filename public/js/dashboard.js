@@ -64,7 +64,7 @@ else{
     // console.log(snapshot.val()[key].productID);
    tableData += "<tr><td>"+snapshot.val()[key].prductName+"</td><td>"+snapshot.val()[key].quantity+"</td><td>"+snapshot.val()[key].subTotal+"</td></tr>";
   }
- tableData +="</tbody></table><div class='row'><a class='waves-effect waves-light btn'><i class='material-icons right'>done</i><input value='Done' type='submit' onclick=\'removeDatabase(\"" + uniqueKey + "\");\'></a>";
+ tableData +="</tbody></table><div class='row'><a class='waves-effect waves-light btn'><i class='material-icons right'>Done</i><input value='Done' type='submit' onclick=\'removeDatabase(\"" + uniqueKey + "\",\"" + userKey + "\");\'></a>";
  tableData +="<a class='col' href='/notify/"+userKey+"'>send Notification</a>";
  tableData +="<a class='col s10' href='https://www.google.com.np/maps/dir/"+exactAddress+"' target='_blank' rel='noopener noreferrer' >Delivery Location</a>";
  tableData +="</span></div></div></div>";
@@ -76,18 +76,35 @@ else{
 //  test.innerHTML =tableData
 });
 
-function removeDatabase(s)
+function removeDatabase(s,uid)
 {
+  console.log("USer id:"+uid)
   const elements = document.getElementsByClassName(s);
   for (var i = 0; i < elements.length; i ++) {
     elements[i].style.display = 'none';
     }
  console.log(s)
-  firebase.database().ref("pendingOrder").child(s).remove().then(function(){
-    M.toast({html: 'Removed'})
-  }).catch(function(err){
-    console.log(err)
-  });
+
+ firebase.database().ref("pendingOrder/"+s).once("value",function(snapshot) {
+  firebase.database().ref("completedOrder/"+s).set(snapshot.val()).then(function(){
+    firebase.database().ref("pendingOrder").child(s).remove().then(function(){
+
+  firebase.database().ref("Users/"+uid+"/completedOrder/"+s).set(snapshot.val()).then(function(){
+    firebase.database().ref("Users/"+uid+"/Waiting/"+s).child(s).remove().then(function(){
+      M.toast({html: 'Removed From Users as well'})
+    }).catch(function(err){
+      console.log(err)
+    });
+  })
+
+ 
+    }).catch(function(err){
+      console.log(err)
+    });
+  }); 
+ });
+
+
 }
 
   ref.on('child_removed', (snapshot) => {

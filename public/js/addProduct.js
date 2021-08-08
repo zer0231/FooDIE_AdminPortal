@@ -13,7 +13,7 @@ const firebaseConfig = {
   const form = document.querySelector('form');
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
-  
+    M.toast({html: "Adding your product..."});
    upload(form).then(data=>{
      console.log(data);
      const res =  fetch('/dashboard/addProduct',{
@@ -24,7 +24,7 @@ form.addEventListener('submit', async (e) => {
      }).then(res =>{
       if(res.status == 201)
       {
-        alert("Product Added");
+        M.toast({html: "Product Add SuccessFul"});
         // window.location = "/dashboard/myProducts";
       }
       else{

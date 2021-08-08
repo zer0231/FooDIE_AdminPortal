@@ -2,6 +2,7 @@ const form = document.querySelector('form');
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
+  M.toast({html: "Please wait !!!"});
   const email = form.email.value;
   const password = form.password.value;
   try 
@@ -18,6 +19,7 @@ form.addEventListener('submit', async (e) => {
              window.location = "/dashboard";
            }
            else{
+            M.toast({html: "Wrong Password or email"});
             console.log(data);
            }
        }   

@@ -6,7 +6,7 @@
 
     <body>
       <div class="container" style="margin-top: 90px;">
-
+    <a href="/dashboard/addCategory">Add Category</a>
         <form action="dashboard/addProduct" method="POST" enctype="multipart/form-data">
   
           <div class="input-field col s6">
@@ -24,7 +24,9 @@
               <label for="price">Its cost?</label>
             </div>
 
-
+<script>
+  console.log("<%=categoryKey.length %>")
+</script>
             <div class="row">
               <div class="col l6 s12">
                 <div class="file-field input-field">
@@ -43,10 +45,10 @@
                 <div class="input-field">
                   <select name="itemType" >
                     <option value="0" disabled selected>Choose your option</option>
-                    <option value="Burger">Burger</option>
-                    <option value="Pizza">Pizza</option>
-                    <option value="Chowmein">Chowmein</option>
-                    <option value="Mo:Mo">Mo:Mo</option>
+                    <% for(var i=0; i < categoryKey.length ; i++) { %>
+                      <option value="<%=categoryKey[i]%>"><%=categoryKey[i]%></option>
+                      <% } %>
+                   
                   </select>
                   <label>Food Type?</label>
                 </div>
