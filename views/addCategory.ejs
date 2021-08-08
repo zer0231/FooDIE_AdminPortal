@@ -1,0 +1,42 @@
+<%- include('partials/head'); -%>
+<%- include('partials/materialize'); -%>
+<%- include('partials/navbar'); -%>
+
+<form action="dashboard/addCategory" method="post">
+
+    <div class="input-field col s6">
+        <input id="name"  name="categoryName" type="text" >
+        <label for="categoryName">Category Name</label>
+      </div>
+
+      <div class="container center-align" style="margin-top: 40px;">
+        <button class="btn-floating btn-large waves-effect waves-light pulse" type="submit" name="action">
+          <i class="material-icons right">check</i>
+        </button> 
+      </div>
+
+</form>
+
+<script>
+    const form = document.querySelector('form');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  M.toast({html: "Adding new Category"});
+  const name_category = form.categoryName.value;
+    try 
+     {
+           const res = await fetch('/dashboard/addCategory', { 
+               method: 'POST', 
+               body: JSON.stringify({name_category}),
+               headers: {'Content-Type': 'application/json'}
+           });
+           const data = await res.json();
+           console.log(data);
+           M.toast({html: data});
+        }catch(err)
+     {
+       console.log(err);
+     }
+    });
+</script>

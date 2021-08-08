@@ -267,9 +267,30 @@ module.exports.editproduct_get = (req,res) =>{
 
  
 module.exports.addProduct_get = (req,res) =>{
-  res.render('addProduct',{title:"Add a Product"})
+  var categories ;
+  var categoryKeyOnly;
+  firebase.database().ref("categories").once("value", function(snapshot) {
+ categories = snapshot.val();
+  categoryKeyOnly = Object.keys(categories);
+ console.log(categoryKeyOnly)
+  }).then(function(){
+
+    res.render('addProduct',{title:"Add a Product",categoryKey:categoryKeyOnly})
+  });
 }
 
+module.exports.addCategory_get = (req,res) =>{
+  res.render('addCategory',{title:"Add a Category"});
+}
+module.exports.addCategory_post = (req,res) =>{
+  var nameCategory = req.body.name_category;
+  var url_invalid = "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fimg.wonderhowto.com%2Fimg%2F02%2F89%2F63589046244773%2F0%2Finvalid.1280x600.jpg&f=1&nofb=1";
+  var jsonObj = {nameCategory : url_invalid }
+  firebase.database().ref("categories/"+nameCategory).set(url_invalid).then(function(){
+    res.status(200).json("success");
+  })
+ console.log(req.body);
+}
 
 
 

@@ -30,6 +30,10 @@ router.get('/dashboard/profile',authController.profile_get);
 router.get('/dashboard/addProduct',authController.addProduct_get);
 router.post('/dashboard/addProduct',authController.addProduct_post);
 
+
+router.get('/dashboard/addCategory',authController.addCategory_get);
+router.post('/dashboard/addCategory',authController.addCategory_post);
+
 router.get('*', function(req, res){ res.status(404).send('what???'); });
 
 
