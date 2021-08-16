@@ -1,25 +1,21 @@
 
 var firebase = require("firebase");
 
-var serviceAccount = require("./FirebaseServiceAccountKey.json");
 class items{
   constructor(itemsName)
   {
     this.itemName = itemsName;
   }
 }
-
 firebase.initializeApp({
-  apiKey:"AIzaSyC3u0nbB9lH7bOUd5Qc38qBeCSDMje5lI0",
-  databaseURL: "https://foodie-19d4e-default-rtdb.firebaseio.com"
+
+  //Create a .env file and add these key to it
+  apiKey:process.env.API_KEY,
+  databaseURL: process.env.DATABASE_URL
 });
 var db = firebase.database();
 
-// admin.initializeApp({
-//   credential: admin.credential.cert(serviceAccount),
-//   databaseURL: "https://foodie-19d4e-default-rtdb.firebaseio.com"
-// })
-// Firebase App.initializeApp() 
+
 module.exports.home_get = (req, res) => {
   if(firebase.auth().currentUser == null)
   {
