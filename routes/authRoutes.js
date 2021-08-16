@@ -34,7 +34,7 @@ router.post('/dashboard/addProduct',authController.addProduct_post);
 router.get('/dashboard/addCategory',authController.addCategory_get);
 router.post('/dashboard/addCategory',authController.addCategory_post);
 
-router.get('*', function(req, res){ res.status(404).send('what???'); });
+router.get('*', function(req, res){ res.status(404).send('Page doesnt exist'); });
 
 
 module.exports = router;

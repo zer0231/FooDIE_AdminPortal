@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const authRoutes = require('./routes/authRoutes');
 const app = express();
@@ -11,6 +12,7 @@ app.use(express.json());
 
 // firebase.auth().signInWithEmailAndPassword("qwe@qwe.com", "qweqwe")
 
+console.log(process.env.NAME)
 
 // view engine
 app.set('view engine', 'ejs');
